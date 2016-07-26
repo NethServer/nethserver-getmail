@@ -1,0 +1,13 @@
+[options]
+read_all = false
+{
+    my $delete = $account->prop('Delete') || 'enabled';
+    if ($delete eq 'enabled') {
+        $OUT .= "delete = true";
+    } else {
+        $OUT .= "delete = false";
+    }
+}
+received = false
+message_log_syslog = true
+
