@@ -2,25 +2,25 @@
 nethserver-getmail
 ==================
 
-The packages configures getmail using cron.
+The package configures getmail using cron.
 
 For each enabled account the system:
 
 * generates a ``.cfg`` file inside the ``/var/lib/getmail`` directory from the template ``/etc/e-smith/templates/getmailrc``
-* add a line inside the ``/etc/cron.d/getmail``, all getmail instances use a non-blocking flock
-* deliver the messages uing dovecot-lda
+* adds a line inside the ``/etc/cron.d/getmail``, all getmail instances use a non-blocking flock
+* delivers the messages using dovecot-lda
  
 
 Database
 --------
 
-All records of type ``getmail`` are saved inside the the ``getmail`` database.
+All records of type ``getmail`` are saved inside the ``getmail`` database.
 
 Properties:
 
 * The key is the mail account to be downloaded
 * ``status``: can be ``enabled`` or ``disabled``, default is ``enabled``
-* ``Account``: local users where messaged will be delivered. Should be in the form *user@domain*
+* ``Account``: local user where messages will be delivered. Should be in the form *user@domain*
 * ``Server``: server of the mail account
 * ``Username``: user name of the mail account
 * ``Password``: password of the mail account
@@ -29,7 +29,7 @@ Properties:
 * ``VirusCheck``: if ``enabled``, check downloaded messages for virus using amavis clamd instance
 * ``SpamCheck``: if ``enabled``, check downloaded messaged for SPAM using spamc
 * ``Retriever``: can be any getmail retriever, see `Getmail official doc <http://pyropus.ca/software/getmail/documentation.html>`_
-    Retrievers available in web interface:
+    Retrievers available in the web interface:
 
     * ``SimplePOP3Retriever``
     * ``SimplePOP3SSLRetriever``
