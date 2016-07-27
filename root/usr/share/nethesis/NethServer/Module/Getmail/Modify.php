@@ -34,6 +34,7 @@ class Modify extends \Nethgui\Controller\Table\Modify
 {
     private $retrievers = array('SimplePOP3Retriever','SimplePOP3SSLRetriever', 'SimpleIMAPRetriever', 'SimpleIMAPSSLRetriever');
     private $times = array('5','10','15','30','60');
+    private $days = array('-1','0','1','2','3','7','30','90','360');
     private $provider;
 
     private function getUserProvider()
@@ -50,7 +51,7 @@ class Modify extends \Nethgui\Controller\Table\Modify
         $parameterSchema = array(
             array('mail', Validate::EMAIL, \Nethgui\Controller\Table\Modify::KEY),
             array('Account', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
-            array('Delete', Validate::SERVICESTATUS, \Nethgui\Controller\Table\Modify::FIELD),
+            array('Delete', $this->createValidator()->memberOf($this->days), \Nethgui\Controller\Table\Modify::FIELD),
             array('Password', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
             array('Server', Validate::HOSTADDRESS, \Nethgui\Controller\Table\Modify::FIELD),
             array('Username', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
@@ -62,7 +63,7 @@ class Modify extends \Nethgui\Controller\Table\Modify
         );
 
         $this->setSchema($parameterSchema);
-        $this->setDefaultValue('Delete', 'enabled');
+        $this->setDefaultValue('Delete', '0');
         $this->setDefaultValue('status', 'enabled');
         $this->setDefaultValue('SpamCheck', 'enabled');
         $this->setDefaultValue('VirusCheck', 'enabled');
@@ -93,9 +94,12 @@ class Modify extends \Nethgui\Controller\Table\Modify
         $view['RetrieverDatasource'] = array_map(function($fmt) use ($view) {
                 return array($fmt, $view->translate($fmt . '_label'));
             }, $this->retrievers);
-       $view['TimeDatasource'] = array_map(function($fmt) use ($view) {
+        $view['TimeDatasource'] = array_map(function($fmt) use ($view) {
                 return array($fmt, $view->translate($fmt . '_label'));
             }, $this->times);
+        $view['DeleteDatasource'] = array_map(function($fmt) use ($view) {
+                return array($fmt, $view->translate($fmt . 'd_label'));
+            }, $this->days);
 
 
         if($this->getRequest()->isValidated()) {

@@ -1,11 +1,13 @@
 [options]
 read_all = false
 {
-    my $delete = $account->prop('Delete') || 'enabled';
-    if ($delete eq 'enabled') {
+    my $delete = $account->prop('Delete') || '0';
+    if ($delete == 0) {
         $OUT .= "delete = true";
-    } else {
+    } elsif ($delete < 0) {
         $OUT .= "delete = false";
+    } else {
+        $OUT .= "delete_after = $delete";
     }
 }
 received = false

@@ -20,7 +20,7 @@ echo $view->panel()
     ->insert($view->selector('Time', $view::SELECTOR_DROPDOWN));
 
 echo $view->fieldset('')->setAttribute('template', $T('Advanced_label'))
-    ->insert($view->checkbox('Delete', 'enabled')->setAttribute('uncheckedValue', 'disabled'))
+    ->insert($view->selector('Delete', $view::SELECTOR_DROPDOWN))
     ->insert($view->checkbox('SpamCheck', 'enabled')->setAttribute('uncheckedValue', 'disabled'))
     ->insert($view->checkbox('VirusCheck', 'enabled')->setAttribute('uncheckedValue', 'disabled'));
     

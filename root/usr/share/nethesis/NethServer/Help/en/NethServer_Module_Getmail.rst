@@ -40,8 +40,7 @@ Check this account every
     It is recommended an interval at least of 15 minutes.
 
 Delete downloaded messages
-    If enabled, downloaded messages will be deleted from the remote server (recommended). Leave disabled to keep
-    a copy on remote server.
+    Choose if downloaded messages should be removed.
 
 Check messags for SPAM
     If enabled, downloaded messages will be checked for SPAM.

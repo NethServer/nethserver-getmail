@@ -24,7 +24,7 @@ Properties:
 * ``Server``: server of the mail account
 * ``Username``: user name of the mail account
 * ``Password``: password of the mail account
-* ``Delete``: if ``enabled``, delete downloaded messages
+* ``Delete``: numbers of days after downloaded messages will be deleted, ``-1`` means never, ``0`` means immediately
 * ``Time``: integer number rappresenting the minutes between each check, valid valued are between 1 and 60
 * ``VirusCheck``: if ``enabled``, check downloaded messages for virus using amavis clamd instance
 * ``SpamCheck``: if ``enabled``, check downloaded messaged for SPAM using spamc
