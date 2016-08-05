@@ -3,12 +3,12 @@
 
     if ($viruscheck eq 'enabled') {
         $OUT .= <<EOF
-[filter-2]
+[filter-1]
 type = Filter_classifier
 path = /usr/bin/clamdscan
 arguments = ("-c", "/etc/clamd.d/amavisd.conf", "--stdout", "--no-summary", "--infected", "-")
 exitcodes_drop = (1,)
-allow_root_commands = true
+user = amavis
 EOF
     }
 }

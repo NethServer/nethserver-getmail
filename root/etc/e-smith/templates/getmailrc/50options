@@ -12,4 +12,5 @@ read_all = false
 }
 received = false
 message_log_syslog = true
+delivered_to = false
 
