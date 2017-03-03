@@ -31,13 +31,18 @@ my $errors = 0;
 if( ! -d $sourceDir) {
     die("Could not find dir $sourceDir");
 }
+my $srcDb = join('', $sourceDir, $esmithDbDir, '/fetchmail');
+
+if (! -f $srcDb) {
+    exit 0;
+}
 
 my $cfg = esmith::ConfigDB->open_ro();
 my $domainName = $cfg->get_value('DomainName');
 
 my $db = esmith::ConfigDB->open('getmail') || die("Could not open getmail database \n");
 
-my $accountsdb = esmith::ConfigDB->open_ro(join('', $sourceDir, $esmithDbDir, '/fetchmail')) || die("Could not open fetchmail database \n");
+my $accountsdb = esmith::ConfigDB->open_ro($srcDb) || die("Could not open fetchmail database \n");
 foreach my $account ($accountsdb->get_all()) {
     my %props = ( type => 'getmail', Retriever => 'SimplePOP3Retriever', VirusCheck => 'enabled', SpamCheck => 'enabled', Time => 30 );
     $props{'status'} = ( $account->prop('active') eq 'YES' ) ? 'enabled' : 'disabled';
