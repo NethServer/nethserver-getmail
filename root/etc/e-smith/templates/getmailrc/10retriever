@@ -4,8 +4,18 @@
     my $server = $account->prop('Server') || 'localhost';
     my $user = $account->prop('Username') || '';
     my $pass = $account->prop('Password') || '';
+    my $mailbox = $account->prop('Mailbox') || '';
+
     $OUT .= "type = $retr\n";
     $OUT .= "server = $server\n";
     $OUT .= "username = $user\n";
     $OUT .= "password = $pass\n";
+    if (strtouper($mailbox) == 'ALL' ) {
+        $OUT .= "mailboxes = ALL\n";
+    } elseif ($mailbox <> '') {
+        $quoted = str_replace(",", "\"", $mailbox);
+        $OUT .= "mailboxes = (\"{$quoted}\")\n";  
+    } else {
+        // Do not specify mailboxes, resulting in default behaviour of getmail: read INBOX only.
+    }
 }

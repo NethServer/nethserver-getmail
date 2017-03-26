@@ -32,6 +32,13 @@ Username
 Password
     The password used to authenticate.
 
+Mailbox folders
+    A comma separated list of mailbox folder(s) to retrieve mail from, i.e *INBOX, INBOX.spam, mailing-lists.model-railroading*. 
+    Leaving this field empty will retrieve only mail in INBOX (getmail default behavior).
+    Enter *ALL* to retrieve mail from all mailbox folders. 
+    Note that the format for hierarchical folder names is determined by the external IMAP server, not by POP3 connector. 
+    Consult your external server's documentation or postmaster if you're unsure what form your server uses.
+
 Deliver messages to
     Select the user that will receive the downloaded messages. 
 

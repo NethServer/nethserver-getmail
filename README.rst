@@ -25,6 +25,7 @@ Properties:
 * ``Server``: server of the mail account
 * ``Username``: user name of the mail account
 * ``Password``: password of the mail account
+* ``Mailbox``: comma separated list of mailbox folders. ``ALL`` means retrieve mail from all folders. Leave blank to retrieve mail from INBOX only.
 * ``Delete``: numbers of days after downloaded messages will be deleted, ``-1`` means never, ``0`` means immediately
 * ``Time``: integer number rappresenting the minutes between each check, valid valued are between 1 and 60
 * ``VirusCheck``: if ``enabled``, check downloaded messages for virus using amavis clamd instance
