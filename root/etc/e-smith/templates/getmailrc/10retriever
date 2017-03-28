@@ -10,12 +10,13 @@
     $OUT .= "server = $server\n";
     $OUT .= "username = $user\n";
     $OUT .= "password = $pass\n";
-    if (strtouper($mailbox) == 'ALL' ) {
-        $OUT .= "mailboxes = ALL\n";
-    } elseif ($mailbox <> '') {
-        $quoted = str_replace(",", "\"", $mailbox);
-        $OUT .= "mailboxes = (\"{$quoted}\")\n";  
+
+    if ((uc $mailbox) eq 'ALL' ) {
+        $OUT .=  "mailboxes = ALL\n";
+    } elsif ($mailbox ne '') {
+        $mailbox =~ s/,/\",\"/g;
+        $OUT .= "mailboxes = (\"$mailbox\")\n";
     } else {
-        // Do not specify mailboxes, resulting in default behaviour of getmail: read INBOX only.
+        # Do not specify mailboxes, resulting in default behaviour of getmail: read INBOX only.
     }
 }
