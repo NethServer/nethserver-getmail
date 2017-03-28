@@ -16,7 +16,7 @@ echo $view->panel()
     ->insert($view->textInput('Server'))
     ->insert($view->textInput('Username'))
     ->insert($view->textInput('Password'))
-    ->indert($view->textInput('Mailbox'))
+    ->insert($view->textInput('Mailbox'))
     ->insert($view->selector('Account',  $view::SELECTOR_DROPDOWN))
     ->insert($view->selector('Time', $view::SELECTOR_DROPDOWN));
 
