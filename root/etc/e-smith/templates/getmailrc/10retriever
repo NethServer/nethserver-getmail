@@ -11,7 +11,9 @@
     $OUT .= "username = $user\n";
     $OUT .= "password = $pass\n";
 
-    if ((uc $mailbox) eq 'ALL' ) {
+    if (($retr eq 'SimplePOP3Retriever') || ($retr eq 'SimplePOP3SSLRetriever')) {
+        # Can't specify mailboxes for POP3-retrievers.
+    } elsif ((uc $mailbox) eq 'ALL' ) {
         $OUT .=  "mailboxes = ALL\n";
     } elsif ($mailbox ne '') {
         $mailbox =~ s/,/\",\"/g;
