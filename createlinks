@@ -66,6 +66,6 @@ event_actions($event,
 
 $event = "post-restore-config";
 event_actions($event,
-     'nethserver-getmail-migrate-ns6' => '60'
+     'nethserver-getmail-migrate-ns6' => '80'
 );
 
