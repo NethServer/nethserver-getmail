@@ -48,3 +48,4 @@ $L['Password_label'] = 'Password';
 $L['Advanced_label'] = 'Advanced';
 $L['SpamCheck_label'] = 'Check messags for SPAM';
 $L['VirusCheck_label'] = 'Check messags for virus';
+$L['Mailbox_label'] = 'Mailbox folders';

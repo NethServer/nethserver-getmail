@@ -55,6 +55,7 @@ class Modify extends \Nethgui\Controller\Table\Modify
             array('Password', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
             array('Server', Validate::HOSTADDRESS, \Nethgui\Controller\Table\Modify::FIELD),
             array('Username', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
+            array('Mailbox', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
             array('Retriever', $this->createValidator()->memberOf($this->retrievers), \Nethgui\Controller\Table\Modify::FIELD),
             array('Time',  $this->createValidator()->memberOf($this->times), \Nethgui\Controller\Table\Modify::FIELD),
             array('status', Validate::SERVICESTATUS, \Nethgui\Controller\Table\Modify::FIELD),

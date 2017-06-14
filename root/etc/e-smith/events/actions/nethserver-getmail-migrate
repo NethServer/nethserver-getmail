@@ -42,9 +42,16 @@ my $domainName = $cfg->get_value('DomainName');
 
 my $db = esmith::ConfigDB->open('getmail') || die("Could not open getmail database \n");
 
+# add empty prop 'Mailbox' to fetchmail accounts if not yet done
+foreach my $account ($db->get_all()) {
+  next if (defined $account->prop('Mailbox'));
+  $account->set_prop('Mailbox' => '');
+}
+
+# convert old fetchmail accounts in to new getmail accounts
 my $accountsdb = esmith::ConfigDB->open_ro($srcDb) || die("Could not open fetchmail database \n");
 foreach my $account ($accountsdb->get_all()) {
-    my %props = ( type => 'getmail', Retriever => 'SimplePOP3Retriever', VirusCheck => 'enabled', SpamCheck => 'enabled', Time => 30 );
+    my %props = ( type => 'getmail', Retriever => 'SimplePOP3Retriever', Mailbox => '', VirusCheck => 'enabled', SpamCheck => 'enabled', Time => 30 );
     $props{'status'} = ( $account->prop('active') eq 'YES' ) ? 'enabled' : 'disabled';
     $props{'Server'} =  $account->prop('popserver');
     $props{'Username'} = $account->prop('username');
