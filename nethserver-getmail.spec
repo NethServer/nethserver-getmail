@@ -1,7 +1,7 @@
 %define getmail_home /var/lib/getmail
 
 Name:		nethserver-getmail
-Version: 1.0.2
+Version: 1.0.3
 Release: 1%{?dist}
 Summary:	NethServer getmail
 Group:		Networking/Daemons
@@ -41,6 +41,9 @@ rm -rf %{buildroot}
 %doc COPYING
 
 %changelog
+* Wed Jun 14 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.3-1
+- restore-config: defer migration until the system is configured - NethServer/nethserver-getmail#5
+
 * Thu Apr 20 2017 Davide Principi <davide.principi@nethesis.it> - 1.0.2-1
 - Upgrade from NS 6 via backup and restore - NethServer/dev#5234 
 
