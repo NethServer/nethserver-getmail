@@ -1,7 +1,7 @@
 %define getmail_home /var/lib/getmail
 
 Name:		nethserver-getmail
-Version: 1.0.3
+Version: 1.0.4
 Release: 1%{?dist}
 Summary:	NethServer getmail
 Group:		Networking/Daemons
@@ -41,6 +41,9 @@ rm -rf %{buildroot}
 %doc COPYING
 
 %changelog
+* Thu Aug 09 2018 Davide Principi <davide.principi@nethesis.it> - 1.0.4-1
+- Enhancement: (un)mask password fields - NethServer/dev#5554
+
 * Wed Jun 14 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.3-1
 - restore-config: defer migration until the system is configured - NethServer/nethserver-getmail#5
 
